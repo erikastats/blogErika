@@ -231,7 +231,6 @@ total_linkedin <- fonte_summ |> filter(fonte_standard == "linkedin") |> pull(cou
 taxa_linkedin_pct <- round((taxa_linkedin / total_linkedin) * 100, 1)
 ```
 
-
 ### Concentração Geográfica e Estratégia de Idioma
 
 ```{r}
@@ -334,18 +333,17 @@ fig_vagas
   
 ```
 
-
 A análise dos cargos mostra uma evolução consciente na estratégia de aplicação. Com o tempo, passei a focar mais em vagas de `r top_vaga_nome`, que representaram `r top_vaga_count` candidaturas (`r top_vaga_pct`%).
 
 Esta mudança reflete um alinhamento mais estratégico entre as oportunidades do mercado e minhas experiências práticas anteriores, priorizando posições onde meu fit técnico e de perfil era mais evidente.
 
 **Distribuição do portfólio de vagas:**
 
-  `r top_vaga_nome` (`r top_vaga_pct`%): Foco principal baseado em experiência
-  
-  Cientista de Dados (`r round(115/total_candidaturas*100, 1)`%): Busca por oportunidades de crescimento
-  
-  Analista de BI (`r round(50/total_candidaturas*100, 1)`%): Vagas especializadas em visualização
+  - `r top_vaga_nome` (`r top_vaga_pct`%): Foco principal baseado em experiência
+
+  - Cientista de Dados (`r round(115/total_candidaturas*100, 1)`%): Busca por oportunidades de crescimento
+
+  - Analista de BI (`r round(50/total_candidaturas*100, 1)`%): Vagas especializadas em visualização
 
 ### Insight Consolidado
 
@@ -355,9 +353,7 @@ A combinação 'mercado local + canal dominante + fit de perfil' mostrou-se mais
 
 ## Empresas que me candidatei
 
-
 ```{r}
-#empresas mais de uma candidatura
 #| echo: false
 #| message: false
 empresas_more_than_1 <- empresas |>
@@ -432,7 +428,6 @@ Das `r total_com_resposta` candidaturas que obtiveram resposta, `r num_fora_praz
 
 Entre as `r sem_resposta$total_cards` aplicações sem resposta, `r pct_sem_resposta_fora_prazo`% já ultrapassaram a marca de duas semanas
 
-"Mesmo entre as empresas que responderam, cerca de `r pct_com_resposta_fora_prazo`% levaram mais de duas semanas; o que mostra que, muitas vezes, o silêncio temporário não significa falta de interesse. Alguns processos simplesmente caminham em ritmos bem diferentes."
 
 ## Taxa de Retorno das Candidaturas
 
@@ -504,7 +499,9 @@ fig
 
 ```
 
-Para categorizar o destino de cada aplicação, classifiquei as candidaturas em três estágios: - Com resposta: Retorno positivo com continuidade do processo;
+Para categorizar o destino de cada aplicação, classifiquei as candidaturas em três estágios:
+
+- Com resposta: Retorno positivo com continuidade do processo;
 
 -   Finalizado: Resposta encerrando a candidatura;
 
@@ -583,9 +580,7 @@ Por que essa diferença? Este gap de r diferenca_dias dias reflete a dinâmica i
 
 -   `r dias_resposta_negativa` dias para rejeitar: Pode indicar processos com múltiplas etapas, onde a empresa aguarda conclusão de todas as entrevistas antes de enviar respostas padronizadas
 
-Analisei meus processos: quando o retorno é positivo, as empresas respondem em média 10 dias. Já as rejeições formais levam cerca de 16 dias. Faz sentido: avançar com quem segue no funil costuma ser prioridade.
 
-O Insight Prático Para candidatos, essa diferença temporal é valiosa: um silêncio de 2-3 semanas nem sempre é mau sinal. Muitas vezes significa que você ainda está sendo considerado em um processo que segue seu curso normal.
 
 ```{r}
 #| echo: false
@@ -605,7 +600,6 @@ stats_resposta <- answer_duration |>
     q3 = quantile(duration, 0.75)
   )
 ```
-
 
 ```{r}
 #| echo: false
@@ -640,11 +634,11 @@ fig
 
 Enquanto as médias nos dão uma visão geral, a distribuição completa revela nuances importantes sobre os processos:
 
-  - `r outlier_count` das `r total_respostas` respostas (`r pct_outliers`%) levaram mais de 30 dias
+-   `r outlier_count` das `r total_respostas` respostas (`r pct_outliers`%) levaram mais de 30 dias
 
-  - O caso mais extremo registrou `r outlier_max` dias entre candidatura e resposta
+-   O caso mais extremo registrou `r outlier_max` dias entre candidatura e resposta
 
-  - A mediana para respostas positivas foi de `r stats_resposta |> filter(list_name_reply == "Com resposta") |> pull(mediana) |> round(1)` dias, mostrando que a maioria dos retornos ágeis realmente ocorre nas primeiras semanas
+-   A mediana para respostas positivas foi de `r stats_resposta |> filter(list_name_reply == "Com resposta") |> pull(mediana) |> round(1)` dias, mostrando que a maioria dos retornos ágeis realmente ocorre nas primeiras semanas
 
 **O Ruído dos Dados Manuais**
 
@@ -654,11 +648,11 @@ Esses desvios mostram como o gerenciamento manual pode introduzir ruído nos dad
 
 **Lições para Coleta de Dados Pessoais**
 
-  1. Timing de registro: O momento de mover um card no Trello nem sempre coincide com o recebimento real do email
+1.  Timing de registro: O momento de mover um card no Trello nem sempre coincide com o recebimento real do email
 
-  2. Consistência metodológica: Manter padrões rigorosos de registro é crucial para dados confiáveis
+2.  Consistência metodológica: Manter padrões rigorosos de registro é crucial para dados confiáveis
 
-  3. Contexto matters: Dados extremos sempre merecem uma verificação qualitativa
+3.  Contexto matters: Dados extremos sempre merecem uma verificação qualitativa
 
 Mantive o boxplot para mostrar a dispersão real. Os outliers refletem mais ruído de registro do que o comportamento das empresas — algo comum em dados coletados manualmente que todo analista deve considerar.
 
@@ -713,7 +707,6 @@ media_julho <- round(mean(julho_data$total_candidatura), 1)
 pico_maximo <- max(candidatura_by_day$total_candidatura)
 ```
 
-
 ```{r}
 #| echo: false
 #| message: false
@@ -751,29 +744,35 @@ Ao longo de `r total_dias` dias ativos de busca, enviei `r total_candidaturas_pe
 
 ### As Três Fases da Busca
 
-  1. Início Empolgado (Maio-Junho)
+1.  Início Empolgado (Maio-Junho)
 
-    - Adaptação ao processo de candidaturas
-    
-    - Curva de aprendizado nas aplicações
-    
-    - Volume moderado enquanto ajustava o ritmo
+```         
+- Adaptação ao processo de candidaturas
 
-  2. Foco em Entrevistas (Junho)
+- Curva de aprendizado nas aplicações
 
-    - Queda natural no volume de novas aplicações
-    
-    - Energia direcionada para processos em andamento
-    
-    - Estratégia mais seletiva nas novas candidaturas
+- Volume moderado enquanto ajustava o ritmo
+```
 
-  3. Intensificação Estratégica (Julho)
-  
-    - `r candidaturas_julho` candidaturas concentradas em `r dias_com_candidatura_julho` dias
-    
-    - Média de `r media_julho` aplicações/dia, quase o dobro do período geral
-    
-    - Pico de `r pico_maximo` candidaturas em um único dia
+2.  Foco em Entrevistas (Junho)
+
+```         
+- Queda natural no volume de novas aplicações
+
+- Energia direcionada para processos em andamento
+
+- Estratégia mais seletiva nas novas candidaturas
+```
+
+3.  Intensificação Estratégica (Julho)
+
+```         
+- `r candidaturas_julho` candidaturas concentradas em `r dias_com_candidatura_julho` dias
+
+- Média de `r media_julho` aplicações/dia, quase o dobro do período geral
+
+- Pico de `r pico_maximo` candidaturas em um único dia
+```
 
 ### O Insight por Trás dos Números
 
@@ -785,14 +784,13 @@ Essa fase intensa não foi sobre quantidade pela quantidade, mas sobre otimizar 
 
 A intensificação de julho foi crucial para:
 
-  - Gerar um pipeline robusto de oportunidades
-  
-  - Aumentar a diversidade de empresas e tipos de vaga
-  
-  - Criar momentum psicológico durante a busca
-  
-  - Resultar na contratação final em agosto
+-   Gerar um pipeline robusto de oportunidades
 
+-   Aumentar a diversidade de empresas e tipos de vaga
+
+-   Criar momentum psicológico durante a busca
+
+-   Resultar na contratação final em agosto
 
 ## Ritmo e Consistência na Busca por Oportunidades
 
@@ -820,11 +818,11 @@ dias_com_aplicar <- total_dias_periodo - dias_sem_aplicar
 
 ### O Panorama do Período Ativo
 
-  `r total_dias_periodo` dias de busca ativa (de `r format(inicio, "%d/%m")` a `r format(fim, "%d/%m/%Y")`)
-  
-  `r dias_com_aplicar` dias com candidaturas vs r dias_sem_aplicar dias sem aplicações
-  
-  `r pct_sem_aplicar`% do tempo dedicado a outras atividades da busca
+`r total_dias_periodo` dias de busca ativa (de `r format(inicio, "%d/%m")` a `r format(fim, "%d/%m/%Y")`)
+
+`r dias_com_aplicar` dias com candidaturas vs `r dias_sem_aplicar` dias sem aplicações
+
+`r pct_sem_aplicar`% do tempo dedicado a outras atividades da busca
 
 ### A Dinâmica dos Dias de Aplicação
 
@@ -847,12 +845,11 @@ candidatura_by_day |>
 
 Nos dias em que efetivamente enviei candidaturas, o volume foi significativo:
 
-  - Média de `r media_aplicacoes` vagas/dia nos dias ativos
-  
-  - Pico de `r max_aplicacoes` candidaturas em um único dia
-  
-  - Mínimo de `r min_aplicacoes` vaga nos dias mais seletivos
+-   Média de `r media_aplicacoes` vagas/dia nos dias ativos
 
+-   Pico de `r max_aplicacoes` candidaturas em um único dia
+
+-   Mínimo de `r min_aplicacoes` vaga nos dias mais seletivos
 
 ### O Verdadeiro Significado dos "Dias Vazios"
 
@@ -860,32 +857,31 @@ Os `r dias_sem_aplicar` dias sem novas aplicações (40% do tempo) não represen
 
 O que realmente acontecia nesses dias:
 
-  ✅ Entrevistas e processos técnicos - etapas avançadas consumindo tempo
-  
-  ✅ Avaliação de ofertas - análise detalhada de propostas recebidas
-  
-  ✅ Gestão do pipeline - acompanhamento de candidaturas pendentes
-  
-  ✅ Busca qualificada - pesquisa por vagas alinhadas ao invés de aplicações em massa
-  
-  ✅ Descanso estratégico - evitar burnout em um processo mentalmente desgastante
+✅ Entrevistas e processos técnicos - etapas avançadas consumindo tempo
 
-** Padrão de "Compensação Inteligente"**
+✅ Avaliação de ofertas - análise detalhada de propostas recebidas
+
+✅ Gestão do pipeline - acompanhamento de candidaturas pendentes
+
+✅ Busca qualificada - pesquisa por vagas alinhadas ao invés de aplicações em massa
+
+✅ Descanso estratégico - evitar burnout em um processo mentalmente desgastante
+
+\*\* Padrão de "Compensação Inteligente"\*\*
 
 A análise revela um padrão eficiente: dias focados em aplicações intensivas (`r media_aplicacoes` vagas/dia) compensavam os períodos dedicados a outras atividades essenciais do processo.
 
 Isso demonstra uma abordagem madura onde quantidade e qualidade se equilibraram conforme as necessidades de cada fase:
 
-  - Dias de volume: Ampliação do funil de oportunidades
-  
-  - Dias de qualidade: Foco em processos avançados e vagas premium
+-   Dias de volume: Ampliação do funil de oportunidades
+
+-   Dias de qualidade: Foco em processos avançados e vagas premium
 
 **Lição para Quem Busca Recolocação**
 
-Buscar emprego é um trabalho em tempo integral que vai muito além de enviar currículos. A métrica importante não é 'dias sem aplicar', mas sim progresso geral no processo,  que inclui entrevistas, networking, estudos e autocuidado.
+Buscar emprego é um trabalho em tempo integral que vai muito além de enviar currículos. A métrica importante não é 'dias sem aplicar', mas sim progresso geral no processo, que inclui entrevistas, networking, estudos e autocuidado.
 
 ### Habilidades Mais Demandadas pelo Mercado
-
 
 ```{r}
 #| echo: false
@@ -997,32 +993,31 @@ fig <- fig |> layout(xaxis = list(autorange = "reversed"))
 fig
 ```
 
-
 As habilidades técnicas revelam uma base clara de conhecimentos exigidos:
 
-  - `r tecnica_mais_frequente` é absoluta: `r count_tecnica_top` menções (`r perc_sql`% das vagas)
-  
-  - `r top_3_tecnicas[2]` segue como segundo lugar com `r top_tecnica$n[2]` citações (`r perc_python`%)
-  
-  - `r top_3_tecnicas[3]` completa o pódio com `r top_tecnica$n[3]` ocorrências
+-   `r tecnica_mais_frequente` é absoluta: `r count_tecnica_top` menções (`r perc_sql`% das vagas)
+
+-   `r top_3_tecnicas[2]` segue como segundo lugar com `r top_tecnica$n[2]` citações (`r perc_python`%)
+
+-   `r top_3_tecnicas[3]` completa o pódio com `r top_tecnica$n[3]` ocorrências
 
 #### Hierarquia clara de ferramentas:
 
-  1. Banco de dados: SQL (fundamental)
-  
-  2. Programação: Python (dominante sobre R)
-  
-  3. Visualização: Power BI (lidera frente ao Tableau)
+1.  Banco de dados: SQL (fundamental)
+
+2.  Programação: Python (dominante sobre R)
+
+3.  Visualização: Power BI (lidera frente ao Tableau)
 
 ### Soft Skills: Comunicação como Imperativo
 
 No aspecto comportamental, os dados são ainda mais reveladores:
 
-  - `r comport_mais_frequente` é a soft skill mais citada de toda a análise: `r count_comport_top` menções (`r perc_comunicacao`% das vagas)
-  
-  - `r top_3_comportamentais[2]` com `r top_comport$n[2]` ocorrências
-  
-  - `r top_3_comportamentais[3]` aparece `r top_comport$n[3]` vezes
+-   `r comport_mais_frequente` é a soft skill mais citada de toda a análise: `r count_comport_top` menções (`r perc_comunicacao`% das vagas)
+
+-   `r top_3_comportamentais[2]` com `r top_comport$n[2]` ocorrências
+
+-   `r top_3_comportamentais[3]` aparece `r top_comport$n[3]` vezes
 
 Destaque crucial: "Boa comunicação" aparece mais que qualquer habilidade técnica, incluindo SQL. Isso reforça que o analista de dados moderno precisa ser, antes de tudo, um comunicador eficaz.
 
@@ -1032,22 +1027,21 @@ A análise pinta um retrato claro do profissional desejado:
 
 💻 Base Técnica Não-Negociável
 
-  - SQL (`r perc_sql`% das vagas) - fundamental para acesso e manipulação de dados
-  
-  - Python (`r perc_python`%) - para análise estatística e machine learning
-  
-  - Ferramentas de BI - Power BI dominante, mas Tableau ainda relevante
+-   SQL (`r perc_sql`% das vagas) - fundamental para acesso e manipulação de dados
+
+-   Python (`r perc_python`%) - para análise estatística e machine learning
+
+-   Ferramentas de BI - Power BI dominante, mas Tableau ainda relevante
 
 🎯 Competências Comportamentais Essenciais
 
-  - Comunicação (`r perc_comunicacao`%) - traduzir dados em insights acionáveis
-  
-  - Trabalho em equipe - colaboração em ambientes multidisciplinares
-  
-  - Resolução de problemas - abordagem analítica para desafios complexos
-  
+-   Comunicação (`r perc_comunicacao`%) - traduzir dados em insights acionáveis
+
+-   Trabalho em equipe - colaboração em ambientes multidisciplinares
+
+-   Resolução de problemas - abordagem analítica para desafios complexos
+
 ### Visualização por Wordcloud
-  
 
 ```{r}
 #| echo: false
@@ -1109,7 +1103,6 @@ requisitos_tecnica <- requisitos |>
 bow_wordcloud2(requisitos_tecnica$habilidade, max_words = 100)
 ```
 
-
 ```{r}
 #| echo: false
 #| message: false
@@ -1117,18 +1110,16 @@ bow_wordcloud2(requisitos_tecnica$habilidade, max_words = 100)
 bow_wordcloud2(requisitos_comportamento$habilidade, max_words = 100)
 ```
 
-
 ### Insight Estratégico para Desenvolvimento
 
 Estes dados orientam prioridades de aprendizado:
 
-  1. SQL é obrigatório - aparece em quase todas as vagas técnicas
-  
-  2. Python + Power BI formam o stack básico moderno
-  
-  3. Comunicação não é opcional - é a soft skill mais valorizada
-  
-  4. R ainda tem espaço (`r top_tecnica$n[8]` menções), mas Python domina
+1.  SQL é obrigatório - aparece em quase todas as vagas técnicas
+
+2.  Python + Power BI formam o stack básico moderno
+
+3.  Comunicação não é opcional - é a soft skill mais valorizada
+
+4.  R ainda tem espaço (`r top_tecnica$n[8]` menções), mas Python domina
 
 "O mercado busca técnicos que comunicam bem, não apenas gênios do código. A habilidade de explicar insights complexos em termos simples é tão valiosa quanto a capacidade de gerá-los."
-
